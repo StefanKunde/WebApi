@@ -1,0 +1,212 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\tools\WebStack.settings.targets" />
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    <!--<CodeAnalysisRuleSet>..\..\Strict.ruleset</CodeAnalysisRuleSet>-->
+    <DefineConstants>$(DefineConstants);ASPNETODATA;ASPNETWEBAPI;NETCORE;NETCORE3x;NOT_CLS_COMPLIANT</DefineConstants>
+    <RootNamespace>Microsoft.AspNet.OData</RootNamespace>
+    <!-- Let's generate our own assembly info -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <Import Project="..\..\Microsoft.AspNet.OData.Shared\Microsoft.AspNet.OData.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- <PackageReference Include="Desktop.Analyzers" Version="1.1.0" /> -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <!-- <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference> -->
+    <PackageReference Include="Microsoft.OData.Core" Version="7.6.1" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.6.1" />
+    <PackageReference Include="Microsoft.Spatial" Version="7.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Contracts" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <!-- <PackageReference Include="System.Security.Cryptography.Hashing.Algorithms.Analyzers" Version="1.1.0" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiActionDescriptor.cs" Link="Adapters\WebApiActionDescriptor.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiActionMap.cs" Link="Adapters\WebApiActionMap.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiAssembliesResolver.cs" Link="Adapters\WebApiAssembliesResolver.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiContext.cs" Link="Adapters\WebApiContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiControllerContext.cs" Link="Adapters\WebApiControllerContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiOptions.cs" Link="Adapters\WebApiOptions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiRequestHeaders.cs" Link="Adapters\WebApiRequestHeaders.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiRequestMessage.cs" Link="Adapters\WebApiRequestMessage.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Adapters\WebApiUrlHelper.cs" Link="Adapters\WebApiUrlHelper.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ChangeSetRequestItem.cs" Link="Batch\ChangeSetRequestItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ChangeSetResponseItem.cs" Link="Batch\ChangeSetResponseItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\DefaultODataBatchHandler.cs" Link="Batch\DefaultODataBatchHandler.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\HttpRequestExtensions.cs" Link="Batch\HttpRequestExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchContent.cs" Link="Batch\ODataBatchContent.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchHandler.cs" Link="Batch\ODataBatchHandler.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchHttpRequestMessageExtensions.cs" Link="Batch\ODataBatchHttpRequestMessageExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchMiddleware.cs" Link="Batch\ODataBatchMiddleware.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchPathMapping.cs" Link="Batch\ODataBatchPathMapping.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchReaderExtensions.cs" Link="Batch\ODataBatchReaderExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchRequestItem.cs" Link="Batch\ODataBatchRequestItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\ODataBatchResponseItem.cs" Link="Batch\ODataBatchResponseItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\OperationRequestItem.cs" Link="Batch\OperationRequestItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\OperationResponseItem.cs" Link="Batch\OperationResponseItem.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Batch\UnbufferedODataBatchHandler.cs" Link="Batch\UnbufferedODataBatchHandler.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Builder\ODataConventionModelBuilder.cs" Link="Builder\ODataConventionModelBuilder.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\EnableQueryAttribute.cs" Link="EnableQueryAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ETagMessageHandler.cs" Link="ETagMessageHandler.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\ActionDescriptorExtensions.cs" Link="Extensions\ActionDescriptorExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\HttpContextExtensions.cs" Link="Extensions\HttpContextExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\HttpRequestExtensions.cs" Link="Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\HttpResponseExtensions.cs" Link="Extensions\HttpResponseExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\ODataApplicationBuilderExtensions.cs" Link="Extensions\ODataApplicationBuilderExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\ODataRouteBuilderExtensions.cs" Link="Extensions\ODataRouteBuilderExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\ODataServiceCollectionExtensions.cs" Link="Extensions\ODataServiceCollectionExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\SerializableErrorExtensions.cs" Link="Extensions\SerializableErrorExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Extensions\UrlHelperExtensions.cs" Link="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Deserialization\DefaultODataDeserializerProvider.cs" Link="Formatter\Deserialization\DefaultODataDeserializerProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Deserialization\ODataDeserializerContext.cs" Link="Formatter\Deserialization\ODataDeserializerContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Deserialization\ODataDeserializerProvider.cs" Link="Formatter\Deserialization\ODataDeserializerProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\IMediaTypeMappingCollection.cs" Link="Formatter\IMediaTypeMappingCollection.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\MediaTypeMapping.cs" Link="Formatter\MediaTypeMapping.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataCountMediaTypeMapping.cs" Link="Formatter\ODataCountMediaTypeMapping.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataInputFormatter.cs" Link="Formatter\ODataInputFormatter.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataInputFormatterFactory.cs" Link="Formatter\ODataInputFormatterFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataModelBinder.cs" Link="Formatter\ODataModelBinder.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataOutputFormatter.cs" Link="Formatter\ODataOutputFormatter.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataOutputFormatterFactory.cs" Link="Formatter\ODataOutputFormatterFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\ODataRawValueMediaTypeMapping.cs" Link="Formatter\ODataRawValueMediaTypeMapping.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\QueryStringMediaTypeMapping.cs" Link="Formatter\QueryStringMediaTypeMapping.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Serialization\DefaultODataSerializerProvider.cs" Link="Formatter\Sserialization\DefaultODataSerializerProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Serialization\ODataErrorSerializer.cs" Link="Formatter\Sserialization\ODataErrorSerializer.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Serialization\ODataSerializerContext.cs" Link="Formatter\Sserialization\ODataSerializerContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Formatter\Serialization\ODataSerializerProvider.cs" Link="Formatter\Sserialization\ODataSerializerProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\FromODataUriAttribute.cs" Link="FromODataUriAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\GetNextPageHelper.cs" Link="GetNextPageHelper.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\HttpRequestScope.cs" Link="HttpRequestScope.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Interfaces\IODataBatchFeature.cs" Link="Interfaces\IODataBatchFeature.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Interfaces\IODataCoreBuilder.cs" Link="Interfaces\IODataCoreBuilder.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Interfaces\IODataFeature.cs" Link="Interfaces\IODataFeature.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\NonValidatingParameterBindingAttribute.cs" Link="NonValidatingParameterBindingAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataBatchFeature.cs" Link="ODataBatchFeature.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataController.cs" Link="ODataController.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataFeature.cs" Link="ODataFeature.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataFormattingAttribute.cs" Link="ODataFormattingAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataMessageWrapperHelper.cs" Link="ODataMessageWrapperHelper.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataNullValueMessageHandler.cs" Link="ODataNullValueMessageHandler.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataOptions.cs" Link="ODataOptions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataQueryParameterBindingAttribute.cs" Link="ODataQueryParameterBindingAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataRoutingAttribute.cs" Link="ODataRoutingAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataServiceBuilder.cs" Link="ODataServiceBuilder.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ODataValueProviderFactory.cs" Link="ODataValueProviderFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\PerRouteContainer.cs" Link="PerRouteContainer.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Query\ODataQueryOptions.cs" Link="Query\ODataQueryOptions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Query\ODataQueryOptionsOfTEntity.cs" Link="Query\ODataQueryOptionsOfTEntity.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Query\QueryFilterProvider.cs" Link="Query\QueryFilterProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ResourceContext.cs" Link="ResourceContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\ResourceSetContext.cs" Link="ResourceSetContext.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Results\CreatedODataResult.cs" Link="Results\CreatedODataResult.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Results\ResultHelpers.cs" Link="Results\ResultHelpers.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Results\UpdatedODataResult.cs" Link="Results\UpdatedODataResult.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\ActionRoutingConvention.cs" Link="Routing\Conventions\ActionRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\AttributeRoutingConvention.cs" Link="Routing\Conventions\AttributeRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\DynamicPropertyRoutingConvention.cs" Link="Routing\Conventions\DynamicPropertyRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\EntityRoutingConvention.cs" Link="Routing\Conventions\EntityRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\EntitySetRoutingConvention.cs" Link="Routing\Conventions\EntitySetRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\FunctionRoutingConvention.cs" Link="Routing\Conventions\FunctionRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\IODataRoutingConvention.cs" Link="Routing\Conventions\IODataRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\MetadataRoutingConvention.cs" Link="Routing\Conventions\MetadataRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\NavigationRoutingConvention.cs" Link="Routing\Conventions\NavigationRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\NavigationSourceRoutingConvention.cs" Link="Routing\Conventions\NavigationSourceRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\ODataRoutingConventions.cs" Link="Routing\Conventions\ODataRoutingConventions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\PropertyRoutingConvention.cs" Link="Routing\Conventions\PropertyRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\RefRoutingConvention.cs" Link="Routing\Conventions\RefRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\SingletonRoutingConvention.cs" Link="Routing\Conventions\SingletonRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\Conventions\UnmappedRequestRoutingConvention.cs" Link="Routing\Conventions\UnmappedRequestRoutingConvention.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\ODataActionSelector.cs" Link="Routing\ODataActionSelector.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\ODataPathParameterBindingAttribute.cs" Link="Routing\ODataPathParameterBindingAttribute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\ODataPathRouteConstraint.cs" Link="Routing\ODataPathRouteConstraint.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\ODataRoute.cs" Link="Routing\ODataRoute.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\Routing\ODataVersionConstraint.cs" Link="Routing\ODataVersionConstraint.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\SingleResult.cs" Link="SingleResult.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData\SingleResultOfT.cs" Link="SingleResultOfT.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Microsoft.AspNet.OData.Shared\Common\CommonWebApiResources.resx">
+      <Link>Properties\CommonWebApiResources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Microsoft.AspNet.OData.Shared\Common\SRResources.resx">
+      <Link>Properties\SRResources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="..\..\Microsoft.AspNet.OData.Shared\Common\CommonWebApiResources.Designer.cs">
+      <Link>Properties\CommonWebApiResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonWebApiResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Microsoft.AspNet.OData.Shared\Common\SRResources.Designer.cs">
+      <Link>Properties\SRResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="C:\Users\mgernand\Projekte\OpenSource\WebApi\src\Microsoft.AspNet.OData.Shared\Query\Expressions\PropertyContainer.generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertyContainer.generated.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Core3Internals\Mvc\Core\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\mgernand\Projekte\OpenSource\WebApi\src\Microsoft.AspNet.OData.Shared\Query\Expressions\PropertyContainer.generated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PropertyContainer.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Core3Internals\Mvc\Core\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

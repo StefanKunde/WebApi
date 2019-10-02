@@ -15,7 +15,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Routing;
+#if NETCORE
 using Microsoft.AspNetCore.TestHost;
+#endif
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.AspNet.OData.Test.Abstraction
@@ -36,9 +38,18 @@ namespace Microsoft.AspNet.OData.Test.Abstraction
             IWebHostBuilder builder = WebHost.CreateDefaultBuilder();
             builder.ConfigureServices(services =>
             {
-                services.AddMvc();
-                services.AddOData();
-                configureService?.Invoke(services);
+				services.AddOData();
+
+#if NETCORE3x
+                services.AddMvc(options =>
+				{
+					options.EnableEndpointRouting = false;
+				}).AddNewtonsoftJson();
+#else
+				services.AddMvc();
+#endif
+
+				configureService?.Invoke(services);
             });
 
             builder.Configure(app =>
@@ -63,8 +74,16 @@ namespace Microsoft.AspNet.OData.Test.Abstraction
                 });
             });
 
+#if NETCORE3x
+			TestServer testServer = new TestServer(builder)
+			{
+				AllowSynchronousIO = true
+			};
+			return testServer;
+#else
             return new TestServer(builder);
-        }
+#endif
+		}
 
         /// <summary>
         /// Create an TestServer with formatters.

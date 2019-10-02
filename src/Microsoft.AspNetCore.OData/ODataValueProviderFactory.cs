@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNet.OData.Common;
 using Microsoft.AspNet.OData.Extensions;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+#pragma warning disable 1591
 
 namespace Microsoft.AspNet.OData.Routing
 {
-    internal class ODataValueProviderFactory : IValueProviderFactory
+    public class ODataValueProviderFactory : IValueProviderFactory
     {
         public Task CreateValueProviderAsync(ValueProviderFactoryContext context)
         {

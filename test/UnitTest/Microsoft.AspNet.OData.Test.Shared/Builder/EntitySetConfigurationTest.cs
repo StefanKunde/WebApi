@@ -42,7 +42,7 @@ namespace Microsoft.AspNet.OData.Test.Builder
         {
             ExceptionAssert.Throws<ArgumentException>(
                 () => new EntitySetConfiguration(modelBuilder: new ODataModelBuilder(), entityClrType: typeof(EntitySetConfigurationTest), name: null),
-                "The argument 'name' is null or empty.\r\nParameter name: name");
+                "The argument 'name' is null or empty." + ParamHelper.Text("name"));
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace Microsoft.AspNet.OData.Test.Builder
                     modelBuilder: new ODataModelBuilder(),
                     entityType: new EntityTypeConfiguration(new ODataModelBuilder(), typeof(EntitySetConfigurationTest)),
                     name: null),
-                    "The argument 'name' is null or empty.\r\nParameter name: name");
+                    "The argument 'name' is null or empty." + ParamHelper.Text("name"));
         }
 
         [Fact]

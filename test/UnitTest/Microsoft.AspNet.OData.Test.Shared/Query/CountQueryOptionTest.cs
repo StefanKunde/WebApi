@@ -39,14 +39,14 @@ namespace Microsoft.AspNet.OData.Test.Query
         public void Constructor_ThrowsException_IfNullRawValueArgument()
         {
             ExceptionAssert.Throws<ArgumentException>(() => new CountQueryOption(null, _context, null),
-                "The argument 'rawValue' is null or empty.\r\nParameter name: rawValue");
+                "The argument 'rawValue' is null or empty." + ParamHelper.Text("rawValue"));
         }
 
         [Fact]
         public void Constructor_ThrowsException_IfEmptyRawValue()
         {
             ExceptionAssert.Throws<ArgumentException>(() => new CountQueryOption(string.Empty, _context, null),
-                "The argument 'rawValue' is null or empty.\r\nParameter name: rawValue");
+                "The argument 'rawValue' is null or empty." + ParamHelper.Text("rawValue"));
         }
 
         [Fact]

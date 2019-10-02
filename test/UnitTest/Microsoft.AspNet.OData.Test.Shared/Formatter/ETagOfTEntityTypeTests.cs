@@ -128,7 +128,7 @@ namespace Microsoft.AspNet.OData.Test.Formatter
             ExceptionAssert.Throws<ArgumentException>(
                 () => etagCustomer.ApplyTo(query),
                 "Cannot apply ETag of 'Microsoft.AspNet.OData.Test.Formatter.Serialization.Models.Customer' to IQueryable of " +
-                "'System.Int32'.\r\nParameter name: query");
+                "'System.Int32'." + ParamHelper.Text("query"));
         }
     }
 }

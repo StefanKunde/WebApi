@@ -13,9 +13,13 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
+#if NETCORE3x
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
+#endif
+
 namespace Microsoft.AspNet.OData.Extensions
 {
-    /// <summary>
+	/// <summary>
     /// Provides extension methods to add odata services.
     /// </summary>
     public static class ODataServiceCollectionExtensions
@@ -25,13 +29,18 @@ namespace Microsoft.AspNet.OData.Extensions
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <returns>An <see cref="IODataBuilder"/> that can be used to further configure the OData services.</returns>
-        public static IODataBuilder AddOData(this IServiceCollection services)
+		public static IODataBuilder AddOData(this IServiceCollection services)
         {
             if (services == null)
             {
                 throw Error.ArgumentNull(nameof(services));
             }
 
+#if NETCORE3x
+            // HACK: This is a fix for .NET Core 3
+            services.AddSingleton<ActionConstraintCache>();
+#endif
+			
             // Setup per-route dependency injection. When routes are added, additional
             // per-route classes will be injected, such as IEdmModel and IODataRoutingConventions.
             services.AddSingleton<IPerRouteContainer, PerRouteContainer>();

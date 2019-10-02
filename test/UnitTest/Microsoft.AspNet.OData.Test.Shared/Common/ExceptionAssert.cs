@@ -258,7 +258,7 @@ namespace Microsoft.AspNet.OData.Test.Common
         /// <exception cref="ThrowsException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown</exception>
         public static ArgumentException ThrowsArgumentNullOrEmpty(Action testCode, string paramName)
         {
-            return Throws<ArgumentException>(testCode, "Value cannot be null or empty.\r\nParameter name: " + paramName, allowDerivedExceptions: false);
+            return Throws<ArgumentException>(testCode, "Value cannot be null or empty." + ParamHelper.Text(paramName), allowDerivedExceptions: false);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Microsoft.AspNet.OData.Test.Common
         {
             if (exceptionMessage != null)
             {
-                exceptionMessage = exceptionMessage + "\r\nParameter name: " + paramName;
+                exceptionMessage = exceptionMessage + ParamHelper.Text(paramName);
                 if (actualValue != null)
                 {
                     exceptionMessage += String.Format(CultureReplacer.DefaultCulture, "\r\nActual value was {0}.", actualValue);
@@ -389,8 +389,8 @@ namespace Microsoft.AspNet.OData.Test.Common
         public static InvalidEnumArgumentException ThrowsInvalidEnumArgument(Action testCode, string paramName, int invalidValue, Type enumType, bool allowDerivedExceptions = false)
         {
             string message = String.Format(CultureReplacer.DefaultCulture,
-                                           "The value of argument '{0}' ({1}) is invalid for Enum type '{2}'.{3}Parameter name: {0}",
-                                           paramName, invalidValue, enumType.Name, Environment.NewLine);
+                                           "The value of argument '{0}' ({1}) is invalid for Enum type '{2}'." + ParamHelper.Text(paramName),
+                                           paramName, invalidValue, enumType.Name);
             return Throws<InvalidEnumArgumentException>(testCode, message, allowDerivedExceptions);
         }
 

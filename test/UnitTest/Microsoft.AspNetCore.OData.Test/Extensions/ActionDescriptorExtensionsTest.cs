@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+#if NETCORE2x
 using Microsoft.AspNetCore.Http.Internal;
+#endif
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Moq;

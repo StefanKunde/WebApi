@@ -2308,7 +2308,7 @@ namespace Microsoft.AspNet.OData.Test.Query.Expressions
         {
             // Arrange & Act & Assert
             ExceptionAssert.Throws<ArgumentNullException>(() => Bind<Product>(filter),
-                "Value cannot be null.\r\nParameter name: qualifiedName");
+                "Value cannot be null." + ParamHelper.Text("qualifiedName"));
         }
 
         [Theory]

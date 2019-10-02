@@ -26,7 +26,7 @@ namespace Microsoft.AspNet.OData.Test.Builder
 
             // Act & Assert
             ExceptionAssert.Throws<ArgumentException>(() => builder.AddSingleton(null, entityType),
-                "The argument 'name' is null or empty.\r\nParameter name: name");
+                "The argument 'name' is null or empty." + ParamHelper.Text("name"));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Microsoft.AspNet.OData.Test.Builder
 
             // Act & Assert
             ExceptionAssert.Throws<ArgumentException>(() => builder.AddSingleton("OsCorp", otherType),
-                "The singleton 'OsCorp' was already configured with a different EntityType ('Company').\r\nParameter name: entityType");
+                "The singleton 'OsCorp' was already configured with a different EntityType ('Company')." + ParamHelper.Text("entityType"));
         }
 
         [Fact]

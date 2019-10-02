@@ -2876,8 +2876,8 @@ namespace Microsoft.AspNet.OData.Test.Builder.Conventions
             ExceptionAssert.ThrowsArgument(() => builder.GetEdmModel(),
                 "propertyInfo",
                 "Found more than one dynamic property container in type 'BadOpenEntityType'. " +
-                "Each open type must have at most one dynamic property container.\r\n" +
-                "Parameter name: propertyInfo");
+                "Each open type must have at most one dynamic property container." +
+				ParamHelper.Text("propertyInfo"));
         }
 
         [Fact]
@@ -2891,8 +2891,8 @@ namespace Microsoft.AspNet.OData.Test.Builder.Conventions
             ExceptionAssert.ThrowsArgument(() => builder.GetEdmModel(),
                 "propertyInfo",
                 "Found more than one dynamic property container in type 'BadDerivedOpenEntityType'. " +
-                "Each open type must have at most one dynamic property container.\r\n" +
-                "Parameter name: propertyInfo");
+                "Each open type must have at most one dynamic property container." +
+				ParamHelper.Text("propertyInfo"));
         }
 
         [Fact]

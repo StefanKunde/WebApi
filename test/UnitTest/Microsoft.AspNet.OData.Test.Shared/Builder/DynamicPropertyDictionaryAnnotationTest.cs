@@ -32,7 +32,7 @@ namespace Microsoft.AspNet.OData.Test.Builder
                 propertyInfo: propertyInfo.Object),
                 "Type 'Int32' is not supported as dynamic property annotation. " +
                 "Referenced property must be of type 'IDictionary<string, object>'." +
-                "\r\nParameter name: propertyInfo");
+                ParamHelper.Text("propertyInfo"));
         }
     }
 }

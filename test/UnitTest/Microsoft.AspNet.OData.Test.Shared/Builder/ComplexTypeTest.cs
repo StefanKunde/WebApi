@@ -162,8 +162,8 @@ namespace Microsoft.AspNet.OData.Test.Builder
             ExceptionAssert.ThrowsArgument(() => builder.GetEdmModel(),
                 "propertyInfo",
                 "Found more than one dynamic property container in type 'BadOpenComplexType'. " +
-                "Each open type must have at most one dynamic property container.\r\n" +
-                "Parameter name: propertyInfo");
+                "Each open type must have at most one dynamic property container." +
+				ParamHelper.Text("propertyInfo"));
         }
 
         [Fact]

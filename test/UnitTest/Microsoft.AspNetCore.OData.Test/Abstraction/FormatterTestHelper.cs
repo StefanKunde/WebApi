@@ -11,14 +11,20 @@ using Microsoft.AspNet.OData.Formatter;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData;
 
+#if NETCORE3x
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+#endif
+
 namespace Microsoft.AspNet.OData.Test.Abstraction
 {
-    internal static class FormatterTestHelper
+	internal static class FormatterTestHelper
     {
         internal static ODataOutputFormatter GetFormatter(ODataPayloadKind[] payload, HttpRequest request, string mediaType = null)
         {

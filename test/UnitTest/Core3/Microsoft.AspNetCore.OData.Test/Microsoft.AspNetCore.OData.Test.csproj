@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\..\Microsoft.AspNet.OData.Test.Shared\Microsoft.AspNet.OData.Test.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\..\..\..\tools\WebStack.settings.targets" />
+
+  <PropertyGroup>
+    <OutputPath>$(OutputPath)bin\$(Configuration)\UnitTest\AspNetCore\</OutputPath>
+    <!-- <CodeAnalysisRuleSet>..\..\..\Relaxed.ruleset</CodeAnalysisRuleSet> -->
+    <DefineConstants>$(DefineConstants);ASPNETODATA;ASPNETWEBAPI;NETCORE;NETCORE3x;NOT_CLS_COMPLIANT</DefineConstants>
+    <RootNamespace>Microsoft.AspNet.OData.Test</RootNamespace>
+    <!-- Let's generate our own assembly info -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="PublicApi\Microsoft.AspNetCore.OData.PublicApi.bsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ControllerDescriptorFactory.cs" Link="Abstraction\ControllerDescriptorFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\FormatterTestHelper.cs" Link="Abstraction\FormatterTestHelper.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\HttpRouteCollectionExtensions.cs" Link="Abstraction\HttpRouteCollectionExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\MockContainer.cs" Link="Abstraction\MockContainer.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ODataConventionModelBuilderFactory.cs" Link="Abstraction\ODataConventionModelBuilderFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ODataDeserializerProviderFactory.cs" Link="Abstraction\ODataDeserializerProviderFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ODataSerializerContextFactory.cs" Link="Abstraction\ODataSerializerContextFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ODataSerializerProviderFactory.cs" Link="Abstraction\ODataSerializerProviderFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\RequestFactory.cs" Link="Abstraction\RequestFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ResourceSetContextFactory.cs" Link="Abstraction\ResourceSetContextFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ResponseFactory.cs" Link="Abstraction\ResponseFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\RoutingConfigurationFactory.cs" Link="Abstraction\RoutingConfigurationFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\ServerFactory.cs" Link="Abstraction\ServerFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\TestActionDescriptorCollectionProvider.cs" Link="Abstraction\TestActionDescriptorCollectionProvider.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\TestNonODataController.cs" Link="Abstraction\TestNonODataController.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\TestODataController.cs" Link="Abstraction\TestODataController.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Abstraction\WebApiAssembliesResolverFactory.cs" Link="Abstraction\WebApiAssembliesResolverFactory.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Batch\ODataBatchPathMappingTest.cs" Link="Batch\ODataBatchPathMappingTest.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Extensions\ActionDescriptorExtensionsTest.cs" Link="Extensions\ActionDescriptorExtensionsTest.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Extensions\HttpRequestExtensions.cs" Link="Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Extensions\HttpRequestExtensionsTest.cs" Link="Extensions\HttpRequestExtensionsTest.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\Extensions\ODataApplicationBuilderExtensionsTest.cs" Link="Extensions\ODataApplicationBuilderExtensionsTest.cs" />
+    <Compile Include="..\..\Microsoft.AspNetCore.OData.Test\PublicApi\PublicApiTest.cs" Link="PublicApi\PublicApiTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="PublicApi\Microsoft.AspNetCore.OData.PublicApi.bsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="Moq" Version="4.13.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Core3\Microsoft.AspNetCore.OData\Microsoft.AspNetCore.OData.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,7 @@ namespace Microsoft.AspNet.OData.Builder
 {
     /// <summary>
     /// Allows configuration to be performed for an entity set in a model.
-    /// A <see cref="EntitySetConfiguration"/> can be obtained by using the method <see cref="ODataModelBuilder.EntitySet"/>.
+    /// A <see cref="EntitySetConfiguration"/> can be obtained by using the method <see cref="ODataModelBuilder.EntitySet{T}"/>.
     /// </summary>
     public class EntitySetConfiguration : NavigationSourceConfiguration
     {

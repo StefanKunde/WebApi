@@ -110,7 +110,7 @@ namespace Microsoft.AspNet.OData.Test.Formatter.Serialization
 
             ExceptionAssert.Throws<ArgumentException>(
                 () => serializer.WriteObject(42, typeof(int), ODataTestUtil.GetMockODataMessageWriter(), writeContext),
-                "The 'RootElementName' property is required on 'ODataSerializerContext'.\r\nParameter name: writeContext");
+                "The 'RootElementName' property is required on 'ODataSerializerContext'." + ParamHelper.Text("writeContext"));
         }
 
         [Fact]

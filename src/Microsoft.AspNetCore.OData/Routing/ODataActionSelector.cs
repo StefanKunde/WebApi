@@ -10,13 +10,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 
+#if NETCORE3x
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
+#endif
+
 namespace Microsoft.AspNet.OData.Routing
 {
-    /// <summary>
+	/// <summary>
     /// An implementation of <see cref="IActionSelector"/> that uses the server's OData routing conventions
     /// to select an action for OData requests.
     /// </summary>

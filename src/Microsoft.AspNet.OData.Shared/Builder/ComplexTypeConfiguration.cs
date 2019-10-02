@@ -8,7 +8,7 @@ namespace Microsoft.AspNet.OData.Builder
 {
     /// <summary>
     /// Allows configuration to be performed for a complex type in a model. A <see cref="ComplexTypeConfiguration"/>
-    /// can be obtained by using the method <see cref="ODataModelBuilder.ComplexType"/>.
+    /// can be obtained by using the method <see cref="ODataModelBuilder.ComplexType{T}"/>.
     /// </summary>
     public class ComplexTypeConfiguration : StructuralTypeConfiguration
     {

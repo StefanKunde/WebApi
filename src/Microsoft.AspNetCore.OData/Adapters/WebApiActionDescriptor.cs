@@ -8,11 +8,17 @@ using System.Reflection;
 using Microsoft.AspNet.OData.Common;
 using Microsoft.AspNet.OData.Interfaces;
 using Microsoft.AspNetCore.Mvc.Controllers;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
+
+#if NETCORE3x
+	using Microsoft.AspNetCore.Mvc.ActionConstraints;
+#endif
 
 namespace Microsoft.AspNet.OData.Adapters
 {
-    /// <summary>
+	/// <summary>
     /// Adapter class to convert Asp.Net WebApi action description to OData WebApi.
     /// </summary>
     internal class WebApiActionDescriptor : IWebApiActionDescriptor

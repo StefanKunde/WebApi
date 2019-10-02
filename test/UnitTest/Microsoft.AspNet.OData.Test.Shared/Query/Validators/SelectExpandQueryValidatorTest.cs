@@ -206,7 +206,7 @@ namespace Microsoft.AspNet.OData.Test.Query.Validators
                 () => validator.Validate(
                     selectExpandQueryOption,
                     new ODataValidationSettings { MaxExpansionDepth = maxExpansionDepth }),
-                "Value must be greater than or equal to 0.\r\nParameter name: value\r\nActual value was -1.");
+                "Value must be greater than or equal to 0." + ParamHelper.Text("value") + "\r\nActual value was -1.");
         }
 
         [Theory]

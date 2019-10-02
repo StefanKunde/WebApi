@@ -9,12 +9,16 @@ using Microsoft.AspNet.OData.Common;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Test.Common;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Builder.Internal;
+#if NETCORE2x
+using Microsoft.AspNetCore.Mvc.Builder.Internal;
+#endif
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,9 +27,15 @@ using Microsoft.Extensions.ObjectPool;
 using Microsoft.OData;
 using Moq;
 
+#if NETCORE3x
+using Microsoft.AspNetCore.Mvc.Routing;
+#else
+
+#endif
+
 namespace Microsoft.AspNet.OData.Test.Abstraction
 {
-    /// <summary>
+	/// <summary>
     /// A class to create IRouteBuilder/HttpConfiguration.
     /// </summary>
     public class RoutingConfigurationFactory
@@ -74,12 +84,21 @@ namespace Microsoft.AspNet.OData.Test.Abstraction
 
             // Create a route build with a default path handler.
             IRouteBuilder routeBuilder = new RouteBuilder(appBuilder);
+
+#if NETCORE3x
+			routeBuilder.DefaultHandler = new MvcRouteHandler(
+				mockInvokerFactory.Object,
+				mockActionSelector.Object,
+				diagnosticSource,
+				mockLoggerFactory.Object);
+#else
             routeBuilder.DefaultHandler = new MvcRouteHandler(
                 mockInvokerFactory.Object,
                 mockActionSelector.Object,
                 diagnosticSource,
                 mockLoggerFactory.Object,
                 new ActionContextAccessor());
+#endif
 
             return routeBuilder;
         }

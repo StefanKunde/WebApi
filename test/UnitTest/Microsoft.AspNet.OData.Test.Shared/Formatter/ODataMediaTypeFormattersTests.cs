@@ -14,7 +14,9 @@ using Microsoft.AspNet.OData.Test.Abstraction;
 using Microsoft.AspNet.OData.Test.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
+#if NETCORE2x
 using Microsoft.AspNetCore.Mvc.Internal;
+#endif
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
@@ -42,9 +44,13 @@ using Moq;
 using Xunit;
 #endif
 
+#if NETCORE3x
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+#endif
+
 namespace Microsoft.AspNet.OData.Test.Formatter
 {
-    public class ODataMediaTypeFormattersTests
+	public class ODataMediaTypeFormattersTests
     {
         [Fact]
         public void TestCreate_CombinedFormatters_SupportedEncodings()

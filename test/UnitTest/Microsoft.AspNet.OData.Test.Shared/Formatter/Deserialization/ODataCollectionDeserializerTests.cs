@@ -77,7 +77,7 @@ namespace Microsoft.AspNet.OData.Test.Formatter.Deserialization
             // Act & Assert
             ExceptionAssert.Throws<ArgumentException>(
                 () => deserializer.ReadInline(42, IntCollectionType, new ODataDeserializerContext()),
-                "The argument must be of type 'ODataCollectionValue'.\r\nParameter name: item");
+                "The argument must be of type 'ODataCollectionValue'." + ParamHelper.Text("item"));
         }
 
         [Fact]
