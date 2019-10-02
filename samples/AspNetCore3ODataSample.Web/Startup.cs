@@ -10,7 +10,8 @@ namespace AspNetCore3ODataSample.Web
 	using Microsoft.Extensions.Hosting;
 	using Models;
 
-	public class Startup
+    // NOTE: Run the app as console application not as IISExpress.
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
