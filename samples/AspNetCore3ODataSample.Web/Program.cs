@@ -22,7 +22,7 @@ namespace AspNetCore3ODataSample.Web
 						// NOTE: https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio
                         options.AllowSynchronousIO = true;
 					});
-					webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
 				});
 		}
 	}
