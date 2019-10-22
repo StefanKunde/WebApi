@@ -1,4 +1,3 @@
-
 namespace AspNetCore3ODataSample.Web
 {
 	using Microsoft.AspNet.OData.Extensions;
@@ -10,7 +9,6 @@ namespace AspNetCore3ODataSample.Web
 	using Microsoft.Extensions.Hosting;
 	using Models;
 
-    // NOTE: Run the app as console application not as IISExpress.
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,7 +21,9 @@ namespace AspNetCore3ODataSample.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddDbContext<MovieContext>(opt => opt.UseInMemoryDatabase("MovieList"));
+            // HACK: Allow synchronous IO.
+            services.Configure<IISServerOptions>(opt => opt.AllowSynchronousIO = true);
+            services.AddDbContext<MovieContext>(opt => opt.UseInMemoryDatabase("MovieList"));
 			services.AddOData();
             services.AddControllers(options =>
 			{
@@ -66,10 +66,12 @@ namespace AspNetCore3ODataSample.Web
                 builder.MapODataServiceRoute("OData3", "composite", EdmModelBuilder.GetCompositeModel());
             });
 
-			// TODO: OData needs to work using the new ASP.NET Core 3 endpoints routing system.
+            // TODO: OData needs to work using the new ASP.NET Core 3 endpoints routing system.
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.Select().Expand().Filter().OrderBy().MaxTop(100).Count();
+
+            //    endpoints.MapODataServiceRoute("OData", "odata", model);
 
             //    endpoints.MapODataServiceRoute("OData1", "efcore", model);
 

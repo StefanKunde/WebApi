@@ -10,7 +10,7 @@
         "ZipCode":"123456",
         "CountryOrRegion":"USA"
     },
-    Products:
+    "Products":
     [
         {
             "ID":1,
