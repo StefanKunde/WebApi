@@ -132,5 +132,22 @@ namespace AspNetCore3ODataSample.Web.Controllers
 
             return Ok(m);
         }
+
+		[EnableQuery]
+        public IActionResult Post([FromBody]Movie movie)
+		{
+			if (Request.Path.Value.Contains("efcore"))
+			{
+				this._context.Movies.Add(movie);
+				this._context.SaveChanges();
+			}
+			else
+			{
+				movie.ID = new Random().Next(3, int.MaxValue);
+				this._inMemoryMovies.Add(movie);
+            }
+
+			return this.Created(movie);
+		}
     }
 }
